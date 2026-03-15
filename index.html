@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>blogs</title>
+
+<style>
+/* Floating Button */
+#chatBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 26px;
+  color: white;
+  background: linear-gradient(135deg,#2563eb,#3b82f6);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  transition: transform 0.3s;
+  animation: pulse 2s infinite;
+}
+
+#chatBtn:hover{
+  transform: scale(1.1);
+}
+
+/* Pulse animation */
+@keyframes pulse{
+  0%{
+    box-shadow:0 0 0 0 rgba(59,130,246,0.6);
+  }
+  70%{
+    box-shadow:0 0 0 15px rgba(59,130,246,0);
+  }
+  100%{
+    box-shadow:0 0 0 0 rgba(59,130,246,0);
+  }
+}
+
+/* Chat window */
+#chatFrame {
+  position: fixed;
+  bottom: 95px;
+  right: 20px;
+  width: 90%;           /* Mobile-friendly width */
+  max-width: 380px;     /* Desktop max width */
+  height: 60vh;         /* 60% of viewport height */
+  max-height: 520px;    /* Desktop max height */
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+  transform: translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* open state */
+#chatFrame.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Mobile adjustments */
+@media (max-width: 500px) {
+  #chatFrame {
+    width: 95%;
+    right: 2.5%;
+    bottom: 80px;
+    height: 50vh;  /* chhoti screens ke liye */
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="app"></div>
+
+<button id="chatBtn">🤖</button>
+
+<iframe
+id="chatFrame"
+src="https://cdn.botpress.cloud/webchat/v3.6/shareable.html?configUrl=https://files.bpcontent.cloud/2026/03/14/08/20260314080850-QCQKGH3Y.json">
+</iframe>
+
+<script type="module" src="/src/main.js"></script>
+
+<script>
+const btn = document.getElementById("chatBtn")
+const chat = document.getElementById("chatFrame")
+
+btn.onclick = () => {
+  chat.classList.toggle("open")
+}
+</script>
+
+</body>
+</html>

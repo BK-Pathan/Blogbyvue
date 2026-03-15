@@ -1,0 +1,27 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden; /* horizontal scroll hide */
+  
+  /* Full page background gradient */
+  background: linear-gradient(135deg, skyblue, slategrey);
+  background-attachment: fixed; /* gradient fixed on scroll */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
